@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="panel panel-primary" style="border:none;background-color: ghostwhite">
+    <h2 class="panel-heading">{{repo.name}}</h2>
+    <div class="panel-body">
+      <ul class="list-group">
+        <li class="list-group-item"><label for="desc">Description :</label> {{repo.description}}</li>
+        <li class="list-group-item" for="email"><label>Go to page :</label><a href="{{repo.html_url}}"> {{repo.name}}</a></li>
+        <li class="list-group-item"><label for="subscription">Subscribers Count :</label> {{repo.subscribers_count}}</li>
+        <li class="list-group-item" *ngIf="repo.parent"><label for="parent">Parent Name :</label><a [routerLink]="['/user',repo.parent.owner.login]">{{repo.parent.owner.login}}</a></li>
+        <li class="list-group-item"><label for="languages">Languages Used : </label>
+          <ul class="list-inline" *ngFor ="let langs of lang | keyvalue">
+            <li>{{langs?.key}}</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+    {{errorMessage}}
+  <div style="margin-top:3%;border:none;background-color:ghostwhite" class="panel panel-primary">
+    <h2 class="panel-heading">Details of the User</h2>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-3"><img src="{{userdata.avatar_url}}" style="float:left;max-width:70%;" class="img-responsive" alt="Profile Image"></div>
+        <div class="col-md-9" style="font-size:2rem">
+          <table>
+            <tr><td><b>Name</b>:</td><td> {{userdata.name}}</td></tr>
+            <tr><td><b>Bio Quote</b>:</td> <td>{{userdata.bio}}</td></tr>
+            <tr><td><b>Github Profile:</b></td><td> <a href="{{userdata.html_url}}">See Profile Here</a></td></tr>
+            <tr><td><b>No.of Repositories</b>:</td><td> {{userdata.public_repos}}</td></tr>
+            <tr><td><b>Followers</b>:</td><td> {{userdata.followers}}</td></tr>
+          </table>
+        </div>
+      </div>
+      <h3><b style="text-decoration: underline">Repositories</b></h3>
+      <div *ngFor="let repo of repos;index as i" class="list-group">
+        <div class="list-group-item">
+          {{i+1}}.<a [routerLink]="['/repository',repo.name,repo.owner.login]" class="list-groupt-item-heading" style="font-size:2rem">{{repo.name}}</a>
+          <p class="list-group-item-text">{{repo.description}}</p>
+        </div>
+      </div>
+      <div>{{last}}</div>
+    </div>
+  </div>
+</div>
